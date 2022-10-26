@@ -11,16 +11,16 @@ do
 	done
 	echo "TF2 + SDK update finished."
 	
-	echo "Updating Open Fortress."
-	until ./of-update.sh
+	echo "Updating Pre-Fortress 2."
+	until ./pf-update.sh
 	do
-		echo "Failed to update Open Fortress. Trying again in a five seconds."
+		echo "Failed to update Pre-Fortress 2. Trying again in a five seconds."
 		sleep 5
 	done
 	echo "Open Fortress update finished."
 
 	echo "Starting Server."
-	./sdk/srcds_run -console -game open_fortress \
+	./sdk/srcds_run -console -game pf2 \
 		-secure -timeout 0 -nobreakpad -exec autoexec
 	EXITCODE=$?
 	if [$EXITCODE -eq 1] || [$EXITCODE -eq 130]; then

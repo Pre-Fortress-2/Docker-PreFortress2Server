@@ -1,12 +1,12 @@
 version: "3.9"
 
 services:
-  ofsv:
+  pfsv:
     # This is the image that the container will use to run the server. The string after the colon is
-    # the tag, which can be either `latest` or `latest-sm`. The first tag is a basic Open Fortress
+    # the tag, which can be either `latest` or `latest-sm`. The first tag is a basic Pre Fortress 2
     # server with no extra plugins or maps installed. The second tag installs SourceMod with all the
-    # necessary components to work with Open Fortress, used for running plugins like RTV.
-    image: notquiteapex/ofsv:latest
+    # necessary components to work with Pre Fortress 2, used for running plugins like RTV.
+    image: prefortress2/pfsv:latest
     stdin_open: true
     tty: true
     
@@ -15,15 +15,16 @@ services:
     # sourcemod installed on your server. These volumes are accessible in /var/lib/docker/volumes on
     # Linux, and you can edit your files so long as you have root permissions (sudo).
     volumes:
+    ### This doesn't work..... need to make sure directory is created
       - type: bind
-        source: ./of_cfg
-        target: /root/.steam/steamcmd/sdk/open_fortress/cfg
+        source: ./pf_cfg
+        target: /root/.steam/steamcmd/sdk/pf2/cfg
       - type: bind
-        source: ./of_custom
-        target: /root/.steam/steamcmd/sdk/open_fortress/custom
+        source: ./pf_custom
+        target: /root/.steam/steamcmd/sdk/pf2/custom
       - type: bind
-        source: ./of_sourcemod
-        target: /root/.steam/steamcmd/sdk/open_fortress/addons/sourcemod
+        source: ./pf_sourcemod
+        target: /root/.steam/steamcmd/sdk/pf2/addons/sourcemod
 
     # These are the ports necessary for server operation. These allow the container to communicate
     # with the host computer through these ports. You will still need to forward the ports yourself.

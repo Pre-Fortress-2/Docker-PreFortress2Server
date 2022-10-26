@@ -9,9 +9,7 @@ ADD ./scripts/* ./
 # Some dependencies to download.
 RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y \
 	lib32gcc1 libstdc++6 libstdc++6:i386 libncurses5:i386 libtinfo5:i386 \
-	libcurl4-gnutls-dev:i386 curl
-# Install murse. This downloads Open Fortress for us.
-RUN curl -L https://dl.spiderden.net/murse/linux -o murse && chmod +x ./murse
+	libcurl4-gnutls-dev:i386 curl 
 
 # Install TF2 and SDK
 RUN steamcmd +runscript ./tf2sdk-update.txt
@@ -27,17 +25,18 @@ RUN cd ./sdk/bin/ && \
 	ln -s soundemittersystem_srv.so soundemittersystem.so && \
 	ln -s studiorender_srv.so studiorender.so && \
 	ln -s vphysics_srv.so vphysics.so
+	mv libstdc++.so.6 libstdc++.so.6.old
 
-# Download Open Fortress.
-RUN ./of-update.sh
+# Download Pre-Fortress 2.
+RUN ./pf-update.sh
 
 # Symlink binary
-RUN cd ./sdk/open_fortress/bin/ && \
+RUN cd ./sdk/pf2/bin/ && \
 	ln -s server.so server_srv.so
 
 # Insert server config and start script defined in scripts.
-RUN mv -f ./server.cfg ./sdk/open_fortress/cfg/
-RUN mv -f ./autoexec.cfg ./sdk/open_fortress/cfg/
+RUN mv -f ./server.cfg ./sdk/pf2/cfg/
+RUN mv -f ./autoexec.cfg ./sdk/pf2/cfg/
 
 # Lastly, set the entrypoint to be the run.sh script
 ENTRYPOINT [ "bash" ]

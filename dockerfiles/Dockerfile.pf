@@ -1,0 +1,13 @@
+# syntax=docker/dockerfile:1
+# Pre-Fortress 2 basic server image.
+# This builds Pre-Fortress 2 from a cached image, only updating files as necessary.
+FROM prefortress2/pfsv:_cache
+
+# Update scripts
+ADD ./scripts/*.sh ./
+ADD ./scripts/*.txt ./
+
+# Update Pre-Fortress 2.
+RUN ./pf-update.sh
+
+# Done.
