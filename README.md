@@ -2,7 +2,7 @@
 This will only work with PF2 0.7! See you soon!
 
 # Pre-Fortress 2 Server with Docker
-A Docker image to streamline and easily deploy new Pre-Fortress 2 servers. Requires [Docker](https://docker.com/) to be installed. Based off the old [official Linux server guide](https://web.archive.org/web/20210602043159/https://steamcommunity.com/sharedfiles/filedetails/?id=2090433448). The image is rebuilt automatically every week on Sunday with all the latest updates for everything.
+A Docker image to streamline and easily deploy new Pre-Fortress 2 servers. Requires [Docker](https://docker.com/) to be installed. Based off the [official Linux server guide](https://steamcommunity.com/sharedfiles/filedetails/?id=2737475433). The image is rebuilt automatically every week on Sunday with all the latest updates for everything.
 
 # Tags
 * [`latest`](Dockerfile.pf) - The latest basic server image of Pre-Fortress 2, with all files updated weekly.
