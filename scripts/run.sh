@@ -17,7 +17,11 @@ do
 		echo "Failed to update Pre-Fortress 2. Trying again in a five seconds."
 		sleep 5
 	done
-	echo "Open Fortress update finished."
+
+	echo "Removing redundant C++ binary"
+	rm ./sdk/bin/libstdc++.so.6
+
+	echo "Pre-Fortress 2 update finished."
 
 	echo "Starting Server."
 	./sdk/srcds_run -console -game pf2 \
