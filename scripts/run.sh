@@ -24,7 +24,6 @@ do
 	echo "Pre-Fortress 2 update finished."
 
 	echo "Starting Server."
-	# Make sure to add '-ip [Your servers IP address] and '-port [Your servers port]'
 	./sdk/srcds_run -console -game pf2 \
 		-secure -timeout 0 -nobreakpad -exec autoexec
 	EXITCODE=$?
