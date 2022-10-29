@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-# Base image file, separate because SteamCMD, TF2, etc. do not update very often.
+# Base image file, separate because SteamCMD, etc. do not update very often.
 FROM steamcmd/steamcmd:latest
 
 # Copy everything in.
@@ -11,8 +11,8 @@ RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y \
 	lib32gcc1 libstdc++6 libstdc++6:i386 libncurses5:i386 libtinfo5:i386 \
 	libcurl4-gnutls-dev:i386 curl 
 
-# Install TF2 and SDK
-RUN steamcmd +runscript ./tf2sdk-update.txt
+# Install SDK
+RUN steamcmd +runscript ./sdk-update.txt
 # Symlink binaries
 RUN cd ./sdk/bin/ && \
 	ln -s datacache_srv.so datacache.so && \

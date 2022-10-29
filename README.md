@@ -7,12 +7,12 @@ A Docker image to streamline and easily deploy new Pre-Fortress 2 servers. Requi
 # Tags
 * [`latest`](Dockerfile.pf) - The latest basic server image of Pre-Fortress 2, with all files updated weekly.
 * [`latest-sm`](Dockerfile.pfsm) - The latest server image of Pre-Fortress 2 with SourceMod preinstalled, with all files updated weekly.
-* [`_cache`](Dockerfile.cache) - The base image that is used to build the above two builds, includes TF2, Source SDK 2013 MP Base, and Pre-Fortress 2. Does not update often. DO NOT USE UNLESS DEBUGGING.
+* [`_cache`](Dockerfile.cache) - The base image that is used to build the above two builds, Source SDK 2013 MP Base, and Pre-Fortress 2. Does not update often. DO NOT USE UNLESS DEBUGGING.
 
 # Simple Guide - Setting up and deploying a simple server
 0. First off, you'll want to [install Docker](https://docs.docker.com/engine/install/), this tutorial assumes you will be using Docker on some flavor of Linux, and know some basic stuff about Linux.
 0. Next, you'll want to clone/download this repo, cd into the cloned repo and run `docker compose up` to run the server attached to your terminal.
-0. The server will start up, first updating TF2 and the SDK, then Pre-Fortress 2, and then properly start the server. You will see a message about root access, this is safe to ignore. You may also see a message about no map being specified, this is safe to ignore if a map is selected in autoexec.cfg (which there is by default, dm_2fort).
+0. The server will start up, first updating the SDK, then Pre-Fortress 2, and then properly start the server. You will see a message about root access, this is safe to ignore. You may also see a message about no map being specified, this is safe to ignore if a map is selected in autoexec.cfg (which there is by default, dm_2fort).
 0. The output will say what its public IP is, indicating that the server is up and running an accessible. You can send a keyboard interrupt (ctrl+c) to stop the server.
 
 Notes:
