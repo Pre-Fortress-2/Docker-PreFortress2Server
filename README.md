@@ -29,7 +29,7 @@ To add/edit files to/on your server, certain directories for the server are expo
 The Pre-Fortress 2 Docker Image bases the image off itself to simply update the files of the game. This is done with the Dockerfile.of file in the dockerfiles folder, however if you need to build the image from scratch the Dockerfile.cache file will be what you need to use.
 
 # Troubleshooting
-If you need to reset your images use `docker images prune` and if you need to reset containers use `docker container purge`. You can also use `docker images` or `container` for more options if you would like to remove specific images or containers instead.
+If you need to reset your images use `docker image prune -a` and if you need to reset containers use `docker container prune -a`. You can also use `docker image` or `container` for more options if you would like to remove specific images or containers instead.
 
 # License
 This project's code is licensed under the MIT license, copyright Logan "NotQuiteApex" Hickok-Dickson. See [LICENSE.md](LICENSE.md) for more details.
