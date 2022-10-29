@@ -3,13 +3,13 @@
 # Also updates the server whenever the server shuts down cleanly.
 while :
 do
-	echo "Updating TF2 + SDK."
-	until steamcmd +runscript ./tf2sdk-update.txt
+	echo "Updating SDK."
+	until steamcmd +runscript ./sdk-update.txt
 	do
-		echo "Failed to update TF2 + SDK. Trying again in a five seconds."
+		echo "Failed to update SDK. Trying again in a five seconds."
 		sleep 5
 	done
-	echo "TF2 + SDK update finished."
+	echo "SDK update finished."
 	
 	echo "Updating Pre-Fortress 2."
 	until ./pf-update.sh
@@ -24,6 +24,7 @@ do
 	echo "Pre-Fortress 2 update finished."
 
 	echo "Starting Server."
+	# Make sure to add '-ip [Your servers IP address] and '-port [Your servers port]'
 	./sdk/srcds_run -console -game pf2 \
 		-secure -timeout 0 -nobreakpad -exec autoexec
 	EXITCODE=$?
