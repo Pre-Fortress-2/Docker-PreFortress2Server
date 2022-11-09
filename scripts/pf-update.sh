@@ -20,6 +20,10 @@ else
 		echo "Failed to clone repo"
 		exit 1
 	fi
+	
+	echo "Removing redundant C++ binary"
+	rm ./sdk/bin/libstdc++.so.6
+
 fi
 
 echo "Install complete, exiting."
