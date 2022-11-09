@@ -18,9 +18,6 @@ do
 		sleep 5
 	done
 
-	echo "Removing redundant C++ binary"
-	rm ./sdk/bin/libstdc++.so.6
-
 	echo "Pre-Fortress 2 update finished."
 
 	echo "Starting Server."
