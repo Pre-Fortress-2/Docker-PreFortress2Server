@@ -33,10 +33,6 @@ RUN ./pf-update.sh
 RUN cd ./sdk/pf2/bin/ && \
 	ln -s server.so server_srv.so
 
-# Insert server config and start script defined in scripts.
-RUN mv -f ./server.cfg ./sdk/pf2/cfg/
-RUN mv -f ./autoexec.cfg ./sdk/pf2/cfg/
-
 # Lastly, set the entrypoint to be the run.sh script
 ENTRYPOINT [ "bash" ]
 CMD [ "/root/.steam/steamcmd/run.sh" ]
