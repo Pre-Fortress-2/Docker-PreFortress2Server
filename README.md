@@ -32,7 +32,7 @@ The Pre-Fortress 2 Docker Image bases the image off itself to simply update the 
 If you need to reset your images use `docker image prune -a` and if you need to reset containers use `docker container prune -a`. You can also use `docker image` or `container` for more options if you would like to remove specific images or containers instead.
 
 # Testing local image forks
-For PF2 0.7 we tested the docker images offline. You can create them by running `docker build . -t pfsv:latest -f ./dockerfiles/Dockerfile.cache` and then running `docker compose up`. This will run the server without connecting to docker's servers.
+For PF2 0.7 we tested the docker images offline. You can create them by running `docker build . -t pfsv:latest -f ./dockerfiles/Dockerfile.cache` and then running `docker compose up`. This will run the server without connecting to docker's servers. In `docker-compose.yml` change `image: prefortress2/pfsv:latest` to `image: pfsv:latest`.
 
 # License
 This project's code is licensed under the MIT license, copyright Logan "NotQuiteApex" Hickok-Dickson. See [LICENSE.md](LICENSE.md) for more details.
