@@ -1,9 +1,8 @@
 name: Build Pre-Fortress 2 images from scratch.
 
-on:
-  schedule:
-    - cron: '0 0 1 * *'
-
+on: 
+  workflow_dispatch:
+  
 jobs:
   prefortress_cache:
     runs-on: ubuntu-latest
