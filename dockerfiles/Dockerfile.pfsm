@@ -11,4 +11,4 @@ RUN curl -L https://sm.alliedmods.net/smdrop/1.11/sourcemod-1.11.0-git6889-linux
 RUN tar -xvzf ./sourcemod.tar.gz -C ./sdk/pf2/
 RUN tar -xvzf ./metamod.tar.gz -C ./sdk/pf2/
 RUN ls
-RUN unzip ./pftools.zip && cp -R ./PF2-Tools-main/* ./sdk/pf2/addons/sourcemod/
+RUN unzip ./pftools.zip && cp -R ./PF2-Tools-master/* ./sdk/pf2/addons/sourcemod/
