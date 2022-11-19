@@ -27,6 +27,7 @@ RUN cd ./sdk/bin/ && \
 	ln -s vphysics_srv.so vphysics.so
 
 # Download Pre-Fortress 2.
+RUN chmod +x pf-update.sh
 RUN ./pf-update.sh
 
 # Symlink binary
