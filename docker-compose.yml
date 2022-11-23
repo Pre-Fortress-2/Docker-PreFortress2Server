@@ -15,7 +15,6 @@ services:
     # sourcemod installed on your server. These volumes are accessible in /var/lib/docker/volumes on
     # Linux, and you can edit your files so long as you have root permissions (sudo).
     volumes:
-    ### This doesn't work..... need to make sure directory is created
       - type: bind
         source: ./pf_cfg
         target: /root/.steam/steamcmd/sdk/pf2/cfg
