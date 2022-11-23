@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-# Open Fortress server with SourceMod image.
+# Pre-Fortress 2 server with SourceMod image.
 FROM prefortress2/pfsv:latest
 
 RUN apt-get update && apt-get install -y unzip
