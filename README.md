@@ -14,7 +14,7 @@ A Docker image to streamline and easily deploy new Pre-Fortress 2 servers. Requi
 
 Notes:
 - If you want to run the server detached, you can run `docker compose up -d` to detach it from your terminal; you'll want to run `docker compose stop` if you want to stop the server if it's detached.
-- You can access the server's files with the volumes created by Docker in the `/var/lib/docker/volumes/` directory, although you will need superuser/root access to manage them (this is a limitation of Docker).
+- You can access the server's files with the volumes created by Docker visiting [Docker Volumes instead of binds](README.md#Docker-Volumes-instead-of-binds)
 - You can run `docker compose down` to remove the container and volumes for the server.
 - You will still need to forward the ports 27005 and 27015 yourself on your router.
 
@@ -30,6 +30,30 @@ If you need to reset your images use `docker image prune -a` and if you need to 
 
 ## Testing local images
 For PF2 0.7 we tested the docker images offline. You can create them by running `docker build . -t pfsv:latest -f ./dockerfiles/Dockerfile.cache` and then running `docker compose up`. This will run the server without connecting to docker's servers. In `docker-compose.yml` change `image: prefortress2/pfsv:latest` to `image: pfsv:latest`.
+
+## Docker Volumes instead of binds
+If you would like to access files in the `/var/lib/docker/volumes/` directory, change:
+
+**From**
+```
+    volumes:
+      - type: bind
+        source: ./pf_cfg
+        target: /root/.steam/steamcmd/sdk/pf2/cfg
+      - type: bind
+        source: ./pf_custom
+        target: /root/.steam/steamcmd/sdk/pf2/custom
+      - type: bind
+        source: ./pf_sourcemod
+        target: /root/.steam/steamcmd/sdk/pf2/addons/sourcemod
+```
+**To**
+```
+volumes:
+      - cfg:/root/.steam/steamcmd/sdk/pf2/cfg
+      - cstm:/root/.steam/steamcmd/sdk/pf2/custom
+      - sm:/root/.steam/steamcmd/sdk/pf2/addons/sourcemod
+```
 
 # License
 This project's code is licensed under the MIT license, copyright Logan "NotQuiteApex" Hickok-Dickson. See [LICENSE.md](LICENSE.md) for more details.
