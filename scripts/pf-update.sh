@@ -14,12 +14,14 @@ curl -s https://api.github.com/repos/Pre-Fortress-2/pf2/releases/latest \
 # Removes all .7z files that isn't the full game.
 for FILE in *
 do
-	echo $FILE
 	if [[ $FILE == *"full"* ]]
 	then
   		PF2=$FILE
 	else
 		if [[ $FILE == *".7z"* ]]
+		then
+			rm -f $FILE
+		f [[ $FILE == *".7z."* ]]
 		then
 			rm -f $FILE
 		fi
