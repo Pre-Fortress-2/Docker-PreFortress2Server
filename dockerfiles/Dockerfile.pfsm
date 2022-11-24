@@ -5,7 +5,7 @@ FROM prefortress2/pfsv:latest
 RUN apt-get update && apt-get install -y unzip
 
 RUN curl -L https://sm.alliedmods.net/smdrop/1.11/sourcemod-1.11.0-git6502-linux.tar.gz -o ./sourcemod.tar.gz && \
-	curl -L https://mms.alliedmods.net/mmsdrop/1.11/mmsource-1.11.0-git1145-linux.tar.gz -o ./metamod.tar.gz && \
+	curl -L https://mms.alliedmods.net/mmsdrop/1.11/mmsource-1.11.0-git1148-linux.tar.gz -o ./metamod.tar.gz && \
 	curl -L https://github.com/Pre-Fortress-2/PF2-Tools/archive/refs/heads/master.zip -o ./pftools.zip && \
 	curl -L https://github.com/peace-maker/DHooks2/releases/download/v2.2.0-detours17/dhooks-2.2.0-detours17.zip -o dhooks.zip
 
