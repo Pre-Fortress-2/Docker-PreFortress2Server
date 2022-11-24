@@ -3,7 +3,7 @@ A Docker image to streamline and easily deploy new Pre-Fortress 2 servers. Requi
 
 # Tags
 * [`latest`](Dockerfile.pf) - The latest basic server image of Pre-Fortress 2, with all files updated weekly.
-* [`latest-sm`](Dockerfile.pfsm) - The latest server image of Pre-Fortress 2 with SourceMod preinstalled, with all files updated weekly.
+* [`latest-sm`](Dockerfile.pfsm) - The latest server image of Pre-Fortress 2 with SourceMod, PF2-Tools and DHooks preinstalled, with all files updated weekly.
 * [`_cache`](Dockerfile.cache) - The base image that is used to build the above two builds, Source SDK 2013 MP Base, and Pre-Fortress 2. Does not update often. DO NOT USE UNLESS DEBUGGING.
 
 # Simple Guide - Setting up and deploying a simple server
