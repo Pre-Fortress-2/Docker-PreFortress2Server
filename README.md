@@ -25,10 +25,10 @@ To add/edit files to/on your server, certain directories for the server are expo
 
 The Pre-Fortress 2 Docker Image bases the image off itself to simply update the files of the game. This is done with the Dockerfile.of file in the dockerfiles folder, however if you need to build the image from scratch the Dockerfile.cache file will be what you need to use.
 
-# Troubleshooting
-If you need to reset your images use `docker image prune -a` and if you need to reset containers use `docker container prune -a`. You can also use `docker image` or `container` for more options if you would like to remove specific images or containers instead.
+## Troubleshooting
+If you need to reset your images use `docker image prune -a` and if you need to reset containers use `docker container prune`. You can also use `docker image` or `container` for more options if you would like to remove specific images or containers instead.
 
-# Testing local image forks
+## Testing local images
 For PF2 0.7 we tested the docker images offline. You can create them by running `docker build . -t pfsv:latest -f ./dockerfiles/Dockerfile.cache` and then running `docker compose up`. This will run the server without connecting to docker's servers. In `docker-compose.yml` change `image: prefortress2/pfsv:latest` to `image: pfsv:latest`.
 
 # License
