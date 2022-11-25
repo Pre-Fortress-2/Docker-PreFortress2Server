@@ -3,21 +3,21 @@
 
 INSTALL=./sdk/pf2/
 if test -f "$INSTALL"; then
-    echo "No PF2 Installation exists."
-    download_game
-    if test -f "currentVersion.txt"; then
-    	content=$(curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt)
-    	if grep -Fxq "$content" currentVersion.txt; then
-    	    echo "Matching version, no need to update."
-	else:
-	    echo "Downloading update."
-	    curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt > ./sdk/currentVersion.txt
-	    download_game
-	fi
-    else:
-    	echo "No verbose version text detected."
-	curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt -o ./sdk/currentVersion.txt
+	echo "No PF2 Installation exists."
 	download_game
+	if test -f "currentVersion.txt"; then
+		content=$(curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt)
+		if grep -Fxq "$content" currentVersion.txt; then
+			echo "Matching version, no need to update."
+		else:
+			echo "Downloading update."
+			curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt > ./sdk/currentVersion.txt
+			download_game
+		fi
+	else:
+		echo "No verbose version text detected."
+		curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt -o ./sdk/currentVersion.txt
+		download_game
     fi
     	
 fi
