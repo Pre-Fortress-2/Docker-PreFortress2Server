@@ -37,7 +37,7 @@ if test -f "$INSTALL"; then
 		content=$(curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt)
 		if grep -Fxq "$content" currentVersion.txt; then
 			echo "Matching version, no need to update."
-		else:
+		else
 			echo "Downloading update."
 			curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt > ./sdk/currentVersion.txt
 			download_game
