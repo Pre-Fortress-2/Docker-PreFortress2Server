@@ -1,27 +1,6 @@
 #!/usr/bin/env bash
 # Updates Pre-Fortress 2.
 
-INSTALL=./sdk/pf2/
-if test -f "$INSTALL"; then
-	if test -f "currentVersion.txt"; then
-		content=$(curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt)
-		if grep -Fxq "$content" currentVersion.txt; then
-			echo "Matching version, no need to update."
-		else:
-			echo "Downloading update."
-			curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt > ./sdk/currentVersion.txt
-			download_game
-		fi
-	else
-		echo "No verbose version text detected."
-		curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt -o ./sdk/currentVersion.txt
-		download_game
-    fi
-else
-	echo "No PF2 Installation exists."
-	download_game
-fi
-
 download_game() {
 	echo "Downloading game."
 	cd sdk
@@ -51,6 +30,27 @@ download_game() {
 	7za x -y $PF2
 	cd ..
 }
+
+INSTALL=./sdk/pf2/
+if test -f "$INSTALL"; then
+	if test -f "currentVersion.txt"; then
+		content=$(curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt)
+		if grep -Fxq "$content" currentVersion.txt; then
+			echo "Matching version, no need to update."
+		else:
+			echo "Downloading update."
+			curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt > ./sdk/currentVersion.txt
+			download_game
+		fi
+	else
+		echo "No verbose version text detected."
+		curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt -o ./sdk/currentVersion.txt
+		download_game
+    fi
+else
+	echo "No PF2 Installation exists."
+	download_game
+fi
 
 echo "Removing redundant C++ binary"
 rm ./sdk/bin/libstdc++.so.6
