@@ -8,7 +8,6 @@ ADD ./scripts/*.sh ./
 ADD ./scripts/*.txt ./
 
 # Update Pre-Fortress 2.
-RUN chmod +x pf-update.sh
 RUN ./pf-update.sh
 
 # Done.
