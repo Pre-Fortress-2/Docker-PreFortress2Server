@@ -30,9 +30,10 @@ download_game() {
 	7za x -y $PF2
 	cd ..
 }
-
+ls
 INSTALL=./sdk/pf2/
-if test -f "$INSTALL"; then
+
+if [ -d "$INSTALL" ]; then
 	if test -f "currentVersion.txt"; then
 		content=$(curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt)
 		if grep -Fxq "$content" currentVersion.txt; then
