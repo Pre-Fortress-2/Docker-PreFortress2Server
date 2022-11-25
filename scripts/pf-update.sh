@@ -4,7 +4,10 @@
 download_game() {
 	echo "Downloading game."
 	cd sdk
-	
+
+	echo "Removing any leftover game files."
+	rm -f *.7z
+
 	# Downloads all .7z files from the latest release.
 	curl -s https://api.github.com/repos/Pre-Fortress-2/pf2/releases/latest \
 	| grep "browser_download_url.*7z" \
@@ -19,9 +22,6 @@ download_game() {
 			PF2=$FILE
 		else
 			if [[ $FILE == *".7z"* ]]; then
-				rm -f $FILE
-			fi
-			if [[ $FILE == *".7z."* ]]; then
 				rm -f $FILE
 			fi
 		fi
