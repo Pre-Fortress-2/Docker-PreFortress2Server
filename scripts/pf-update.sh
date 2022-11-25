@@ -14,7 +14,7 @@ if test -f "$INSTALL"; then
 			curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt > ./sdk/currentVersion.txt
 			download_game
 		fi
-	else:
+	else
 		echo "No verbose version text detected."
 		curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt -o ./sdk/currentVersion.txt
 		download_game
@@ -36,15 +36,13 @@ download_game() {
 	# Removes all .7z files that isn't the full game.
 	for FILE in *
 	do
-		if [[ $FILE == *"full"* ]]
-		then
+		if [[ $FILE == *"full"* ]]; then
 			PF2=$FILE
 		else
-			if [[ $FILE == *".7z"* ]]
-			then
+			if [[ $FILE == *".7z"* ]]; then
 				rm -f $FILE
-			if [[ $FILE == *".7z."* ]]
-			then
+			fi
+			if [[ $FILE == *".7z."* ]]; then
 				rm -f $FILE
 			fi
 		fi
@@ -52,7 +50,6 @@ download_game() {
 
 	7za x -y $PF2
 	cd ..
-
 }
 
 echo "Removing redundant C++ binary"
