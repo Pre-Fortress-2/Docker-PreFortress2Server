@@ -50,6 +50,7 @@ if [ -d "$INSTALL" ]; then
     fi
 else
 	echo "No PF2 Installation exists."
+	curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt -o ./sdk/currentVersion.txt
 	download_game
 fi
 
