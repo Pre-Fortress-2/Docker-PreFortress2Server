@@ -43,7 +43,7 @@ download_game() {
 			if [[ $FILE == *".7z"* ]]
 			then
 				rm -f $FILE
-			f [[ $FILE == *".7z."* ]]
+			if [[ $FILE == *".7z."* ]]
 			then
 				rm -f $FILE
 			fi
