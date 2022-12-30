@@ -6,24 +6,18 @@ services:
     # the tag, which can be either `latest` or `latest-sm`. The first tag is a basic Pre Fortress 2
     # server with no extra plugins or maps installed. The second tag installs SourceMod with all the
     # necessary components to work with Pre-Fortress 2, used for running plugins like RTV.
-    image: prefortress2/pfsv:latest
+    image: prefortress2/pfsv:latest-sm
     stdin_open: true
     tty: true
-    
+
     # These are volumes for accessing specific aspects of your server, such as the config folder,
     # the custom folder, and the sourcemod folder. The last volume will not work if you do not have
     # sourcemod installed on your server. These volumes are accessible in /var/lib/docker/volumes on
     # Linux, and you can edit your files so long as you have root permissions (sudo).
     volumes:
-      - type: bind
-        source: ./pf_cfg
-        target: /root/.steam/steamcmd/sdk/pf2/cfg
-      - type: bind
-        source: ./pf_custom
-        target: /root/.steam/steamcmd/sdk/pf2/custom
-      - type: bind
-        source: ./pf_sourcemod
-        target: /root/.steam/steamcmd/sdk/pf2/addons/sourcemod
+      - pf_cfg:/root/.steam/steamcmd/sdk/pf2/cfg
+      - pf_custom:/root/.steam/steamcmd/sdk/pf2/custom
+      - pf_addons:/root/.steam/steamcmd/sdk/pf2/addons
 
     # These are the ports necessary for server operation. These allow the container to communicate
     # with the host computer through these ports. You will still need to forward the ports yourself.
@@ -33,6 +27,6 @@ services:
       - "27015:27015/udp"
 
 volumes:
-  cfg:
-  cstm:
-  sm:
+  pf_cfg:
+  pf_custom:
+  pf_addons:
