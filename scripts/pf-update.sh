@@ -31,25 +31,30 @@ download_game() {
 	cd ..
 }
 
+
+# this needs to be updated, its reliant on the old currentVersion.txt system.
+# needs to just check the tag from the latest release
+# curl https://api.github.com/repos/Pre-Fortress-2/pf2/releases/latest -s | jq .tag_name -r
+
 INSTALL=./sdk/pf2/
 if [ -d "$INSTALL" ]; then
 	if test -f "./sdk/currentVersion.txt"; then
-		content=$(curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt)
+		content=$(curl https://api.github.com/repos/Pre-Fortress-2/pf2/releases/latest -s | jq .tag_name -r)
 		if grep -Fxq "$content" ./sdk/currentVersion.txt; then
 			echo "Matching version, no need to update."
 		else
 			echo "Downloading update."
-			curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt > ./sdk/currentVersion.txt
+			curl https://api.github.com/repos/Pre-Fortress-2/pf2/releases/latest -s | jq .tag_name -r > ./sdk/currentVersion.txt
 			download_game
 		fi
 	else
 		echo "No verbose version text detected."
-		curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt -o ./sdk/currentVersion.txt
+		curl https://api.github.com/repos/Pre-Fortress-2/pf2/releases/latest -s | jq .tag_name -r > ./sdk/currentVersion.txt
 		download_game
     fi
 else
 	echo "No PF2 Installation exists."
-	curl -L https://raw.githubusercontent.com/Pre-Fortress-2/pf2/main/currentVersion.txt -o ./sdk/currentVersion.txt
+	curl https://api.github.com/repos/Pre-Fortress-2/pf2/releases/latest -s | jq .tag_name -r > ./sdk/currentVersion.txt
 	download_game
 fi
 
