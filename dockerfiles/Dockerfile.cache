@@ -14,7 +14,7 @@ RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y \
 # Install SDK
 RUN steamcmd +runscript /root/.steam/pfsv/sdk-update.txt
 
-RUN pwd
+RUN ls
 # Symlink binaries and Removing redundant C++ binary
 RUN cd ./sdk/bin/ && \
 	ln -s datacache_srv.so datacache.so && \
@@ -31,21 +31,17 @@ RUN cd ./sdk/bin/ && \
 
 # Download Pre-Fortress 2.
 RUN ./pf-update.sh
-RUN pwd
 # Symlink binary
 RUN cd ./sdk/pf2/bin/ && \
 	ln -s server.so server_srv.so
-RUN pwd
 	
 # Insert server config and start script defined in scripts.
 RUN mv -f ./server.cfg ./sdk/pf2/cfg/
 RUN mv -f ./autoexec.cfg ./sdk/pf2/cfg/
-RUN pwd
 
 # Lastly, set the entrypoint to be the run.sh script
 ENTRYPOINT [ "bash" ]
 CMD [ "/root/.steam/steamcmd/run.sh" ]
-RUN pwd
 
 # Expose the SRCDS port. Purely for the -P cli argument.
 # People who run the container will still need to route the port themselves.
