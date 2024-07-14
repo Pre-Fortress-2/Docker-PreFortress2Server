@@ -14,6 +14,7 @@ RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y \
 # Install SDK
 RUN steamcmd +runscript /root/.steam/pfsv/sdk-update.txt
 
+RUN ls 
 # Symlink binaries and Removing redundant C++ binary
 RUN cd ./sdk/bin/ && \
 	ln -s datacache_srv.so datacache.so && \
