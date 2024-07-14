@@ -5,7 +5,7 @@ on:
   
 jobs:
   prefortress_cache:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -16,7 +16,7 @@ jobs:
       - name: Docker Push
         run: docker push prefortress2/pfsv:_cache
   prefortress_latest:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     needs: prefortress_cache
     steps:
       - name: Checkout repo
@@ -28,7 +28,7 @@ jobs:
       - name: Docker Push
         run: docker push prefortress2/pfsv:latest
   prefortress_latest-sm:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     needs: prefortress_latest
     steps:
       - name: Checkout repo
