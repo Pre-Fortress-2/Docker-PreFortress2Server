@@ -11,7 +11,7 @@ download_game() {
 	rm -f latest.tar.gz
 
 	# Downloads latest tarball from the latest archive.
-	wget https://archive.prefortress.com/latest/latest.tar.gz -O latest.tar.gz
+	curl -L https://archive.prefortress.com/latest/latest.tar.gz -o ./latest.tar.gz
 
 	tar -xzf latest.tar.gz
 	cd ..

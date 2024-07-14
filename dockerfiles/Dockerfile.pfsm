@@ -4,6 +4,6 @@ FROM prefortress2/pfsv:latest
 
 RUN apt-get update && apt-get install -y unzip
 
-RUN wget https://github.com/Pre-Fortress-2/PF2-Tools/releases/latest/download/PF2-Tools-Linux.zip 
+RUN curl -L https://github.com/Pre-Fortress-2/PF2-Tools/releases/latest/download/PF2-Tools-Linux.zip -o ./PF2-Tools-Linux.zip
 
 RUN unzip -o PF2-Tools-Linux.zip -d ./sdk/pf2
