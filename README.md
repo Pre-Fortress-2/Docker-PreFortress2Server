@@ -9,7 +9,7 @@ A Docker image to streamline and easily deploy new Pre-Fortress 2 servers. Requi
 # Simple Guide - Setting up and deploying a simple server
 0. First off, you'll want to [install Docker](https://docs.docker.com/engine/install/), this tutorial assumes you will be using Docker on some flavor of Linux, and know some basic stuff about Linux.
 0. Next, you'll want to clone/download this repo, cd into the cloned repo and run `docker compose up` to run the server attached to your terminal.
-0. The server will start up, first updating the SDK, then Pre-Fortress 2, and then properly start the server. You will see a message about root access, this is safe to ignore. You may also see a message about no map being specified, this is safe to ignore if a map is selected in autoexec.cfg (which there is by default, dm_2fort).
+0. The server will start up, first updating the SDK, then Pre-Fortress 2, and then properly start the server. You will see a message about root access, this is safe to ignore. You may also see a message about no map being specified, this is safe to ignore if a map is selected in autoexec.cfg (which there is by default, koth_crossover).
 0. The output will say what its public IP is, indicating that the server is up and running an accessible. You can send a keyboard interrupt (ctrl+c) to stop the server.
 
 Notes:
@@ -29,31 +29,8 @@ The Pre-Fortress 2 Docker Image bases the image off itself to simply update the 
 If you need to reset your images use `docker image prune -a` and if you need to reset containers use `docker container prune`. You can also use `docker image` or `container` for more options if you would like to remove specific images or containers instead.
 
 ## Testing local images
-For PF2 0.7 we tested the docker images offline. You can create them by running `docker build . -t pfsv:latest -f ./dockerfiles/Dockerfile.cache` and then running `docker compose up`. This will run the server without connecting to docker's servers. In `docker-compose.yml` change `image: prefortress2/pfsv:latest` to `image: pfsv:latest`.
+For PF2 we tested the docker images offline. You can create them by running `docker build . -t pfsv:latest -f ./dockerfiles/Dockerfile.cache` and then running `docker compose up`. This will run the server without connecting to docker's servers. In `docker-compose.yml` change `image: prefortress2/pfsv:latest` to `image: pfsv:latest`.
 
-## Docker Volumes instead of binds
-If you would like to access files in the `/var/lib/docker/volumes/` directory, change:
-
-**From**
-```
-    volumes:
-      - type: bind
-        source: ./pf_cfg
-        target: /root/.steam/steamcmd/sdk/pf2/cfg
-      - type: bind
-        source: ./pf_custom
-        target: /root/.steam/steamcmd/sdk/pf2/custom
-      - type: bind
-        source: ./pf_sourcemod
-        target: /root/.steam/steamcmd/sdk/pf2/addons/sourcemod
-```
-**To**
-```
-volumes:
-      - cfg:/root/.steam/steamcmd/sdk/pf2/cfg
-      - cstm:/root/.steam/steamcmd/sdk/pf2/custom
-      - sm:/root/.steam/steamcmd/sdk/pf2/addons/sourcemod
-```
 
 # License
 This project's code is licensed under the MIT license, copyright Logan "NotQuiteApex" Hickok-Dickson. See [LICENSE.md](LICENSE.md) for more details.
