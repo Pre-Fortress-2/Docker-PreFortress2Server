@@ -14,7 +14,6 @@ RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y \
 # Install SDK
 RUN steamcmd +runscript /root/.steam/pfsv/sdk-update.txt
 
-RUN ls 
 # Symlink binaries and Removing redundant C++ binary
 RUN cd ./sdk/bin/ && \
 	ln -s datacache_srv.so datacache.so && \
@@ -30,10 +29,11 @@ RUN cd ./sdk/bin/ && \
 	mv libstdc++.so.6 libstdc++.so.6.old
 
 # Download Pre-Fortress 2.
+WORKDIR /root/.steam/pfsv/
 RUN ./pf-update.sh
 
 # Symlink binary
-RUN cd ./sdk/pf2/bin/ && \
+RUN cd /sdk/pf2/bin/ && \
 	ln -s server.so server_srv.so
 	
 # Insert server config and start script defined in scripts.
