@@ -19,7 +19,7 @@ download_game() {
 
 INSTALL=./sdk/pf2/
 if [ -d "$INSTALL" ]; then
-	if test -f "./sdk/currentVersion.txt"; then
+	if test -f "./sdk/version.txt"; then
 		content=$(curl https://archive.prefortress.com/latest/version.txt)
 		if grep -Fxq "$content" ./sdk/version.txt; then
 			echo "Matching version, no need to update."
