@@ -1,4 +1,4 @@
-name: Build Pre-Fortress 2 images from scratch.
+name: Build images from scratch.
 
 on: 
   workflow_dispatch:

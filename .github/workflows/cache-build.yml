@@ -1,4 +1,4 @@
-name: Build Pre-Fortress 2 images with cached images.
+name: Build with cached images.
 
 on:
   workflow_dispatch:
