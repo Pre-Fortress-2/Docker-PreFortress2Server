@@ -13,7 +13,8 @@ RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y \
 
 # Install SDK
 RUN steamcmd +runscript ./sdk-update.txt
-# Symlink binaries
+
+# Symlink binaries and Removing redundant C++ binary
 RUN cd ./sdk/bin/ && \
 	ln -s datacache_srv.so datacache.so && \
 	ln -s dedicated_srv.so dedicated.so && \
@@ -24,7 +25,8 @@ RUN cd ./sdk/bin/ && \
 	ln -s shaderapiempty_srv.so shaderapiempty.so && \
 	ln -s soundemittersystem_srv.so soundemittersystem.so && \
 	ln -s studiorender_srv.so studiorender.so && \
-	ln -s vphysics_srv.so vphysics.so
+	ln -s vphysics_srv.so vphysics.so && \
+	mv libstdc++.so.6 libstdc++.so.6.old
 
 # Download Pre-Fortress 2.
 RUN ./pf-update.sh

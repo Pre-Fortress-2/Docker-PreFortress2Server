@@ -11,15 +11,14 @@ download_game() {
 	rm -f latest.tar.gz
 
 	# Downloads latest tarball from the latest archive.
-	wget https://archive.prefortress.com/latest/latest.tar.gz
+	wget https://archive.prefortress.com/latest/latest.tar.gz -O latest.tar.gz
 
 	tar -xzf latest.tar.gz
 	cd ..
 }
 
-INSTALL=./sdk/pf2/
-if [ -d "$INSTALL" ]; then
-	if test -f "./sdk/version.txt"; then
+if [ -d "./sdk/pf2/" ]; then
+	if [ -f "./sdk/version.txt" ]; then
 		content=$(curl https://archive.prefortress.com/latest/version.txt)
 		if grep -Fxq "$content" ./sdk/version.txt; then
 			echo "Matching version, no need to update."
@@ -36,8 +35,4 @@ else
 	download_game
 fi
 
-echo "Removing redundant C++ binary"
-rm ./sdk/bin/libstdc++.so.6
-
 echo "Install complete, exiting."
-exit 0
