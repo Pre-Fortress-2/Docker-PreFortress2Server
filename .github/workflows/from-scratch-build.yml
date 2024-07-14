@@ -1,4 +1,4 @@
-name: Build images from scratch.
+name: From Scratch
 
 on: 
   workflow_dispatch:

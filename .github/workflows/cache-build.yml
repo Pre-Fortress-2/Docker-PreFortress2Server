@@ -1,4 +1,4 @@
-name: Build with cached images.
+name: With Cache
 
 on:
   workflow_dispatch:
