@@ -5,13 +5,13 @@ download_game() {
 	echo "Downloading game."
 
 	cd sdk
-	curl https://archive.prefortress.com/latest/version.txt > ./version.txt
+	curl https://dl.prefortress.com/latest/version.txt > ./version.txt
 	
 	echo "Removing any leftover game files."
 	rm -f latest.tar.gz
 
 	# Downloads latest tarball from the latest archive.
-	curl -L https://archive.prefortress.com/latest/latest.tar.gz -o ./latest.tar.gz
+	curl -L https://dl.prefortress.com/latest/latest.tar.gz -o ./latest.tar.gz
 
 	tar -xzf latest.tar.gz
 	cd ..
@@ -19,7 +19,7 @@ download_game() {
 
 if [ -d "./sdk/pf2/" ]; then
 	if [ -f "./sdk/version.txt" ]; then
-		content=$(curl https://archive.prefortress.com/latest/version.txt)
+		content=$(curl https://dl.prefortress.com/latest/version.txt)
 		if grep -Fxq "$content" ./sdk/version.txt; then
 			echo "Matching version, no need to update."
 		else
